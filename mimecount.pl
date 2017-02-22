@@ -14,6 +14,11 @@ while(<FIND>) {
 
         chomp $type;
 
+        # force certain types when "file" gets it weird..
+        /\.js$/ and $type = "application/javascript";
+        /\.json$/ and $type = "application/json";
+        /\.css$/ and $type = "text/css";
+
         print "$_\t$size\t$type\n";
 
         $totals{$type} += $size;
