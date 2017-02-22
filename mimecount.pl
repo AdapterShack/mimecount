@@ -14,10 +14,12 @@ while(<FIND>) {
 
         chomp $type;
 
-        # force certain types when "file" gets it weird..
+        # force certain types when standard "file" gets it weird..
         /\.js$/ and $type = "application/javascript";
         /\.json$/ and $type = "application/json";
         /\.css$/ and $type = "text/css";
+        /\.woff2?$/ and $type = "application/woff";
+        /\.eot$/ and $type = "application/vnd.ms-fontobject";
 
         print "$_\t$size\t$type\n";
 
